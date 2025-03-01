@@ -1,0 +1,122 @@
+@use "sass:map";
+@use "sass:math";
+
+// Grid variables
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+);
+
+$grid-gutter-width: 1.5rem;
+
+// Mixin for media queries
+@mixin respond-to($breakpoint) {
+    $min-width: map.get($grid-breakpoints, $breakpoint);
+    @if $min-width != null {
+        @media (min-width: #{$min-width}) {
+            @content;
+        }
+    }
+}
+
+// Row styles
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-#{$grid-gutter-width} / 2);
+    margin-left: calc(-#{$grid-gutter-width} / 2);
+
+    > * {
+        padding-right: calc(#{$grid-gutter-width} / 2);
+        padding-left: calc(#{$grid-gutter-width} / 2);
+    }
+}
+
+// Column styles
+@mixin col($size) {
+    flex: 0 0 auto;
+    width: calc(#{$size} * 1%);
+}
+
+@mixin col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+// Base columns
+.col-1 { @include col(calc(100 / 12)); }
+.col-2 { @include col(calc(200 / 12)); }
+.col-3 { @include col(25); }
+.col-4 { @include col(calc(400 / 12)); }
+.col-5 { @include col(calc(500 / 12)); }
+.col-6 { @include col(50); }
+.col-7 { @include col(calc(700 / 12)); }
+.col-8 { @include col(calc(800 / 12)); }
+.col-9 { @include col(75); }
+.col-10 { @include col(calc(1000 / 12)); }
+.col-11 { @include col(calc(1100 / 12)); }
+.col-12 { @include col(100); }
+
+// Responsive columns for each breakpoint
+@each $breakpoint, $width in $grid-breakpoints {
+    @include respond-to($breakpoint) {
+        .col-#{$breakpoint}-1 { @include col(calc(100 / 12)); }
+        .col-#{$breakpoint}-2 { @include col(calc(200 / 12)); }
+        .col-#{$breakpoint}-3 { @include col(25); }
+        .col-#{$breakpoint}-4 { @include col(calc(400 / 12)); }
+        .col-#{$breakpoint}-5 { @include col(calc(500 / 12)); }
+        .col-#{$breakpoint}-6 { @include col(50); }
+        .col-#{$breakpoint}-7 { @include col(calc(700 / 12)); }
+        .col-#{$breakpoint}-8 { @include col(calc(800 / 12)); }
+        .col-#{$breakpoint}-9 { @include col(75); }
+        .col-#{$breakpoint}-10 { @include col(calc(1000 / 12)); }
+        .col-#{$breakpoint}-11 { @include col(calc(1100 / 12)); }
+        .col-#{$breakpoint}-12 { @include col(100); }
+        .col-#{$breakpoint}-auto { @include col-auto; }
+    }
+}
+
+// Responsive utility classes for rows
+@each $breakpoint, $width in $grid-breakpoints {
+    @include respond-to($breakpoint) {
+        .row-#{$breakpoint} {
+            display: flex;
+        }
+    }
+}
+
+// Offset classes
+.offset-1 { margin-left: calc(100% / 12); }
+.offset-2 { margin-left: calc(200% / 12); }
+.offset-3 { margin-left: 25%; }
+.offset-4 { margin-left: calc(400% / 12); }
+.offset-5 { margin-left: calc(500% / 12); }
+.offset-6 { margin-left: 50%; }
+.offset-7 { margin-left: calc(700% / 12); }
+.offset-8 { margin-left: calc(800% / 12); }
+.offset-9 { margin-left: 75%; }
+.offset-10 { margin-left: calc(1000% / 12); }
+.offset-11 { margin-left: calc(1100% / 12); }
+.offset-12 { margin-left: 100%; }
+
+// Responsive offset classes
+@each $breakpoint, $width in $grid-breakpoints {
+    @include respond-to($breakpoint) {
+        .offset-#{$breakpoint}-1 { margin-left: calc(100% / 12); }
+        .offset-#{$breakpoint}-2 { margin-left: calc(200% / 12); }
+        .offset-#{$breakpoint}-3 { margin-left: 25%; }
+        .offset-#{$breakpoint}-4 { margin-left: calc(400% / 12); }
+        .offset-#{$breakpoint}-5 { margin-left: calc(500% / 12); }
+        .offset-#{$breakpoint}-6 { margin-left: 50%; }
+        .offset-#{$breakpoint}-7 { margin-left: calc(700% / 12); }
+        .offset-#{$breakpoint}-8 { margin-left: calc(800% / 12); }
+        .offset-#{$breakpoint}-9 { margin-left: 75%; }
+        .offset-#{$breakpoint}-10 { margin-left: calc(1000% / 12); }
+        .offset-#{$breakpoint}-11 { margin-left: calc(1100% / 12); }
+        .offset-#{$breakpoint}-12 { margin-left: 100%; }
+    }
+}

@@ -1,0 +1,89 @@
+@use "@styles/breakpoints" as *;
+
+.quick-transfers {
+    &__row {
+        display: flex;
+        align-items: center;
+
+        h6 {
+            font-size: 16px;
+            color: #718EBF;
+            white-space: nowrap;
+            @include breakpoint-down('sm') {
+                font-size: 12px;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__form {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        background: #EDF1F7;
+        border-radius: 50px;
+        margin-left: auto;
+    }
+
+    &__input-group {
+        position: relative;
+        flex: 1;
+    }
+
+    &__input {
+        width: 100%;
+        padding-left: 1rem;
+        background: transparent;
+        border: 0;
+        font-size: 1rem;
+        outline: none;
+        
+        @include breakpoint-down('sm') {
+            font-size: 0.875rem;
+            padding-left: 0.75rem;
+            height: 40px;
+        }
+
+        &::placeholder {
+            color: #718EBF;
+        }
+    }
+
+    &__button {
+        padding: 0.75rem 1.5rem;
+        background: #232323;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 11px;
+        
+        @include breakpoint-down('sm') {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.875rem;
+            gap: 8px;
+        }
+        
+        svg {
+            width: 80%;
+            @include breakpoint-down('sm') {
+                width: 70%;
+            }
+        }
+        
+        &:hover:not(:disabled) {
+           opacity: 0.8;
+        }
+        
+        &:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+        }
+    }
+}

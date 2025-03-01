@@ -1,0 +1,74 @@
+@use "@styles/variables" as *;
+
+$background-color: transparent;
+$background-color-light: #303030;
+
+.settings-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    &__label {
+        font-size: 1rem;
+        color: $text-color;
+        font-weight: 500;
+    }
+
+    &__required {
+        color: $error-color;
+        margin-left: 0.25rem;
+    }
+
+    &__field {
+        padding: 0.9rem 1rem;
+        border: 1px solid $border-color;
+        border-radius: 15px;
+        font-size: 1rem;
+        color: $text-secondary;
+        background-color: $background-color;
+        transition: all 0.2s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: none;
+        }
+
+        &:disabled {
+            background-color: $background-color-light;
+            cursor: not-allowed;
+        }
+
+        &--error {
+            border-color: $error-color;
+
+        }
+
+        &::placeholder {
+            color: #718EBF;
+        }
+    }
+
+    &__error {
+        font-size: 0.875rem;
+        color: $error-color;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 1rem;
+
+        &__label {
+            font-size: 0.875rem;
+        }
+
+        &__field {
+            padding: 0.625rem 0.875rem;
+            font-size: 0.875rem;
+        }
+
+        &__error {
+            font-size: 0.75rem;
+        }
+    }
+}

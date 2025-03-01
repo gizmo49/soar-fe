@@ -1,0 +1,49 @@
+@use "@styles/variables" as *;
+
+
+.main-layout {
+  display: grid;
+  grid-template-areas:
+    "sidenav header"
+    "sidenav main";
+  grid-template-columns: $side-nav-width 1fr;
+  grid-template-rows: $top-nav-height 1fr;
+  min-height: 100vh;
+  height: 100%;
+  
+  &__content {
+    grid-area: main;
+    background-color: $background-light;
+    padding: 1rem;
+    overflow-y: auto;
+    min-height: calc(100vh - #{$top-nav-height});
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-areas:
+      "header"
+      "main";
+    grid-template-columns: 1fr;
+  }
+
+  &__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    animation: fadeIn 0.2s ease;
+
+    @media (max-width: $breakpoint-mobile) {
+      display: block;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

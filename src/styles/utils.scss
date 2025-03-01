@@ -1,0 +1,29 @@
+
+.d__svg {
+    display: inline-flex;
+
+    div {
+        display: contents;
+    }
+}
+
+.d-inline-flex {
+    display: inline-flex;
+}
+
+
+.flex__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.d__flex {
+    display: flex;
+}

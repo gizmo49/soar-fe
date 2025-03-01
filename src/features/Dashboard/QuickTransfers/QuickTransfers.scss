@@ -1,0 +1,10 @@
+@use "@styles/variables" as *;
+
+.quick-transfers {
+    // Only keep container-level styles here
+    &__profiles-container {
+        position: relative;
+        width: 100%;
+        padding: 0 1rem;
+    }
+}

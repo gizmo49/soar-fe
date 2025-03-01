@@ -1,0 +1,41 @@
+// Breakpoint variables
+$breakpoints: (
+  'xs': 375px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Breakpoint mixins
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @media (min-width: map-get($breakpoints, $min)) and (max-width: map-get($breakpoints, $max)) {
+    @content;
+  }
+}
+
+// Responsive visibility helpers
+@mixin hide-up($size) {
+  @include breakpoint-up($size) {
+    display: none !important;
+  }
+}
+
+@mixin hide-down($size) {
+  @include breakpoint-down($size) {
+    display: none !important;
+  }
+}

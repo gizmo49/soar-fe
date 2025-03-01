@@ -1,0 +1,36 @@
+@use "@styles/variables" as *;
+@use "@styles/breakpoints" as *;
+
+.customer__cards {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE and Edge
+  
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+    background: transparent;
+  }
+  
+  .credit-card {
+    scroll-snap-align: start;
+    flex: 0 0 auto; 
+    
+    @include breakpoint-down('md') {
+      width: 380px;
+    }
+    
+    @include breakpoint-down('sm') {
+      width: 340px;
+    }
+    
+    @include breakpoint-down('xs') {
+      width: 280px;
+    }
+  }
+}

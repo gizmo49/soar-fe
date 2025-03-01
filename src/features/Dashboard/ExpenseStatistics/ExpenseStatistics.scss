@@ -1,0 +1,58 @@
+@use "@styles/variables" as *;
+
+.expense-statistics {
+    padding: 1rem;
+
+    &__chart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+
+        svg {
+            overflow: visible;
+        }
+
+        .pie-segment {
+            transition: transform 0.3s ease;
+            transform-origin: center;
+            cursor: pointer;
+            transform: scale(1.5) translateY(-5px);
+
+            &:hover {
+                filter: brightness(1.1);
+            }
+
+            &--large {
+                transform: scale(1.7);
+            }
+        }
+    }
+
+    &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        color: white;
+        font-size: 12px;
+        font-family: $primary_font_family--medium;
+        text-align: center;
+        white-space: nowrap;
+        pointer-events: none;
+        transition: transform 0.3s ease;
+
+        &--left, &--right {
+            align-items: center;
+        }
+    }
+
+    &__label-text {
+        font-weight: 500;
+    }
+
+    &__label-value {
+        opacity: 0.8;
+        font-size: 11px;
+    }
+}
